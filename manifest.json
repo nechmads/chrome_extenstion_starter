@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome Extension Templae",
+  "version": "1.0.0",
+  "action": { "default_popup": "index.html" },
+  "permissions": ["identity"],
+  "oauth2": {
+    "client_id": "ADD YOUR CLIENT ID HERE",
+    "scopes": ["openid", "email", "profile"]
+  },
+  "key": "ADD YOUR KEY HERE"
+}

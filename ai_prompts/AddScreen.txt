@@ -1,0 +1,10 @@
+To add a new screen, follow the following instructions:
+
+1. All screens should be under the src/screens folder.
+
+2. Each screen should be in its own subfolder
+
+3. Individual screens folders and files should be groupd under one folder. For example, the home authentication screen should be under src/screens/auth/home/AuthHome.tsx and the AuthName screen should be under src/screens/auth/name-step/AuthNameStep.tsx
+
+4. Add the proper route to the AppNavigation.tsx file (using React Router v6). Routes that are accesible only for authenticated suers should use the AuthenticateLayout layout and ones that are shown to unauthenticated users use th UnauthenticatedLayout lyout.
+When naming routes don't use - or _. For example: A route for user profile should be named userprofile.
