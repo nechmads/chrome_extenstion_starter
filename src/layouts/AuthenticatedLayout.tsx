@@ -26,7 +26,7 @@ const AuthenticatedLayout = () => {
     const checkSession = async () => {
       const { data } = await supabase.auth.getSession();
 
-      if (!data.session?.user || true) {
+      if (!data.session?.user) {
         navigate("/auth/home");
       }
     };
