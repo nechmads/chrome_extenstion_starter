@@ -1,8 +1,8 @@
 import supabase from "@/services/supabase";
-import { useUser } from "@/state/authState";
+import { useIsAuthenticated } from "@/state/authState";
 import { useEffect } from "react";
 import { useNavigate, useOutlet } from "react-router-dom";
-import AnalyticsContainer from "@/components/base/AnalyticsContaciner";
+import AnalyticsContainer from "@/components/base/AnalyticsContainer";
 
 /**
  * AuthenticatedLayout Component
@@ -18,7 +18,7 @@ import AnalyticsContainer from "@/components/base/AnalyticsContaciner";
  * </Route>
  */
 const AuthenticatedLayout = () => {
-  const user = useUser();
+  const isAuthenticated = useIsAuthenticated();
   const navigate = useNavigate();
   const outlet = useOutlet();
 
@@ -30,11 +30,11 @@ const AuthenticatedLayout = () => {
         navigate("/auth/home");
       }
     };
-    if (!user) {
+    if (!isAuthenticated) {
       navigate("/auth/home");
     }
     checkSession();
-  }, [user, navigate]);
+  }, [isAuthenticated, navigate]);
 
   return (
     <>

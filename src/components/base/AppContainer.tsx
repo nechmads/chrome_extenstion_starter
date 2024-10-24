@@ -1,24 +1,40 @@
-/**
- * AppContainer Component
- *
- * This component serves as the root container for the entire application.
- * It's a simple wrapper that renders its children without adding any additional
- * structure or styling. This can be useful for applying global styles or context
- * providers in the future if needed.
- *
- * @component
- * @example
- * <AppContainer>
- *   <YourAppContent />
- * </AppContainer>
- */
+import { useUser } from "@/state/authState";
+import React, { useEffect } from "react";
 
 interface AppContainerProps {
-  /** The child elements to be rendered within the container */
   children: React.ReactNode;
 }
 
-const AppContainer: React.FC<AppContainerProps> = ({ children }) => {
+const AppContainer = ({ children }: AppContainerProps) => {
+  const user = useUser();
+  useEffect(() => {
+    const checkAuthAndRedirect = async () => {
+      const isAuthenticated = user !== undefined;
+
+      // Check if we're in a popup by examining window dimensions
+      const isPopup = window.innerWidth === 340 && window.innerHeight === 600;
+
+      // Check if this is already a tab view by looking for the 'source=tab' parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const isTab = urlParams.get("source") === "tab";
+
+      console.log("isAuthenticated", isAuthenticated, user);
+      console.log("isPopup", isPopup);
+      console.log("isTab", isTab);
+      if (!isAuthenticated && isPopup && !isTab) {
+        // Only open new tab if we're in the popup and not already in tab view
+        await chrome.tabs.create({
+          url: chrome.runtime.getURL("index.html?source=tab"),
+        });
+        // Close the popup
+        window.close();
+      }
+    };
+
+    checkAuthAndRedirect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return <>{children}</>;
 };
 

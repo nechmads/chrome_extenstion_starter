@@ -7,7 +7,7 @@ import AuthEmailStep from "@/screens/auth/email-step/AuthEmailStep";
 import AuthEmailOTPStep from "@/screens/auth/email-otp-step/AuthEmailOTPStep";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthenticatedLayout from "@/layouts/AuthenticatedLayout";
-import AppContainer from "@/components/base/AppContainer";
+import AuthSuccessScreen from "@/screens/auth/success/AuthSuccessScreen";
 
 /**
  * AppNavigation Component
@@ -46,6 +46,10 @@ const router = createBrowserRouter([
         path: "emailotpstep",
         element: <AuthEmailOTPStep />,
       },
+      {
+        path: "success",
+        element: <AuthSuccessScreen />,
+      },
     ],
   },
   {
@@ -61,11 +65,7 @@ const router = createBrowserRouter([
 ]);
 
 const AppNavigation = () => {
-  return (
-    <AppContainer>
-      <RouterProvider router={router} />
-    </AppContainer>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default AppNavigation;

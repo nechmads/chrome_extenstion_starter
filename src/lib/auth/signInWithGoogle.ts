@@ -1,5 +1,6 @@
 import supabase from "@/services/supabase";
 import { authState } from "@/state/authState";
+import { navigateTo } from "@/lib/navigation/navigationHelpers";
 
 /**
  * Initiates the Google Sign-In process for Chrome extensions
@@ -52,6 +53,8 @@ export const signInWithGoogle = async () => {
             id: data.user.id,
             email: data.user.email ?? "",
           });
+
+          navigateTo("/auth/success");
         }
       }
     }

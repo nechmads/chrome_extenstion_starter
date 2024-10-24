@@ -18,6 +18,7 @@ const AuthEmailOTPStep = () => {
 
   useEffect(() => {
     sendOTPEmail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ const AuthEmailOTPStep = () => {
         name: registerFlowState.name.peek(),
         id: session.data.session!.user.id,
       });
-      navigate("/app/home");
+      navigate("/auth/success");
     } catch (error) {
       console.error("Error verifying OTP:", error);
       showNotification({

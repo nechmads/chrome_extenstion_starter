@@ -1,5 +1,5 @@
 import { useOutlet } from "react-router-dom";
-import AnalyticsContainer from "@/components/base/AnalyticsContaciner";
+import AnalyticsContainer from "@/components/base/AnalyticsContainer";
 
 /**
  * UnauthenticatedLayout Component

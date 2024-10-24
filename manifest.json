@@ -3,7 +3,7 @@
   "name": "Chrome Extension Templae",
   "version": "1.0.0",
   "action": { "default_popup": "index.html" },
-  "permissions": ["identity"],
+  "permissions": ["identity", "activeTab", "storage"],
   "oauth2": {
     "client_id": "ADD YOUR CLIENT ID HERE",
     "scopes": ["openid", "email", "profile"]

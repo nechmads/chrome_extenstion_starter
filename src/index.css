@@ -102,6 +102,6 @@
 
 body {
   margin: 0;
-  min-width: 320px;
-  min-height: 640px;
+  width: 340px;
+  height: 600px;
 }
